@@ -1,5 +1,5 @@
 <h1 align="center">Hi 👋, I'm Carlos Lopez Jr</h1>
-<h3 align="center">Space Cowboy from Texas</h3>
+<h3 align="center">Computer Science Student</h3>
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=carloslopezjr&label=Profile%20views&color=0e75b6&style=flat" alt="carloslopezjr" /> </p>
 
