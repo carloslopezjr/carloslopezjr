@@ -5,7 +5,7 @@
 
 - 👨🏽‍🔧 Project Lead for a Machine Learning project that uses facial recgonition to open a high priority door 
 - 🌱 Advancing my knowledge with data structures to solve more problems using time and memory efficient approaches
-- 📫 Feel free to reach out to me @ **carlosssolrac1@gmail.com**
+- 📫 Feel free to reach out to me at **carlosssolrac1@gmail.com**
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
