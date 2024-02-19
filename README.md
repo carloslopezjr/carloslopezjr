@@ -3,10 +3,9 @@
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=carloslopezjr&label=Profile%20views&color=0e75b6&style=flat" alt="carloslopezjr" /> </p>
 
-- 🌱 I’m currently learning about **Data Structures**
-- Project Lead for a Machine Learning project that uses facial recgonition to open a high priority door 
-
-- 📫 How to reach me **carlosssolrac1@gmail.com**
+- 👨🏽‍🔧 Project Lead for a Machine Learning project that uses facial recgonition to open a high priority door 
+- 🌱 Advancing my knowledge with data structures to solve more problems using time and memory efficient approaches
+- 📫 Feel free to reach out to me @ **carlosssolrac1@gmail.com**
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
