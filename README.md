@@ -1,4 +1,4 @@
-<h2 align="left">Hi 👋! My name is Carlos and I'm a programmer, from San Antonio, Texas 🤠</h2>
+<h2 align="left">Hi 👋! My name is Carlos from San Antonio, Texas 🤠</h2>
 
 ###
 
