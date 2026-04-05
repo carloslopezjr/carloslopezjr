@@ -2,12 +2,6 @@
 
 ###
 
-<div align="center">
-  <img src="https://profile-counter.glitch.me/carloslopezjr/count.svg?"  />
-</div>
-
-###
-
 <img align="right" height="150" src="https://media.giphy.com/media/QDjpIL6oNCVZ4qzGs7/giphy.gif?cid=ecf05e477h3a3qye35rfuduw1wzbiznvh23h90co3s3i4hqt&ep=v1_gifs_search&rid=giphy.gif&ct=g"  />
 
 ###
