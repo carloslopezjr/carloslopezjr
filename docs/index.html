@@ -10,6 +10,10 @@ body { margin: 0; background: #010409; color: #c9d1d9; }
 main { max-width: 900px; margin: 0 auto; padding: 32px 20px; }
 h1 { margin: 0 0 8px; font-size: 24px; }
 .intro { margin: 0 0 24px; color: #8b949e; }
+.sync-controls { display: flex; align-items: center; gap: 12px; margin: 0 0 18px; padding: 12px; border: 1px solid #30363d; border-radius: 10px; background: #0d1117; }
+.sync-controls button { padding: 8px 13px; border: 1px solid #3fb950; border-radius: 7px; background: #238636; color: #fff; font: inherit; font-weight: 600; cursor: pointer; }
+.sync-controls button:disabled { cursor: wait; opacity: .65; }
+.sync-status { color: #8b949e; font-size: 13px; }
 .heatmap { overflow-x: auto; border: 1px solid #30363d; border-radius: 12px; background: #0d1117; }
 .heatmap svg { display: block; min-width: 802px; width: 100%; height: auto; }
 .activity-cell { cursor: pointer; outline: none; }
@@ -20,6 +24,11 @@ h1 { margin: 0 0 8px; font-size: 24px; }
 .stat { padding: 12px; border-radius: 8px; background: #161b22; }
 .value { display: block; font-size: 24px; font-weight: 650; color: #f0f6fc; }
 .label { display: block; margin-top: 2px; font-size: 12px; color: #8b949e; }
+.books { width: 100%; margin-top: 18px; border-collapse: collapse; }
+.books caption { margin-bottom: 8px; text-align: left; font-weight: 650; color: #f0f6fc; }
+.books th,.books td { padding: 9px 10px; border-top: 1px solid #30363d; text-align: right; }
+.books th:first-child,.books td:first-child { text-align: left; }
+.books th { color: #8b949e; font-size: 12px; font-weight: 500; }
 .privacy { margin-top: 16px; font-size: 12px; color: #8b949e; }
 @media (max-width: 560px) { .stats { grid-template-columns: 1fr; } }
 </style>
@@ -28,13 +37,17 @@ h1 { margin: 0 0 8px; font-size: 24px; }
 <main>
 <h1>Kindle reading activity</h1>
 <p class="intro">Select a square to inspect that day's KOReader activity.</p>
+<section class="sync-controls" id="sync-controls" hidden>
+<button type="button" id="sync-button">Sync Kindle now</button>
+<span class="sync-status" id="sync-status">Checking sync status…</span>
+</section>
 <div class="heatmap"><svg xmlns="http://www.w3.org/2000/svg" width="802" height="215" viewBox="0 0 802 215" role="img" aria-labelledby="heatmap-title heatmap-description">
 <title id="heatmap-title">Kindle reading activity</title>
 <desc id="heatmap-description">Daily reading activity for the last 365 days</desc>
 <rect width="100%" height="100%" rx="12" fill="#0d1117"/>
 <style>text{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;fill:#c9d1d9}.title{font-size:16px;font-weight:650}.sub{font-size:11px;fill:#8b949e}.day{font-size:10px;fill:#8b949e}</style>
 <text x="20" y="28" class="title">Kindle reading activity</text>
-<text x="20" y="47" class="sub">26 pages read in the last 365 days</text>
+<text x="20" y="47" class="sub">51 pages read in the last 365 days</text>
 <rect class="activity-cell" data-date="2025-11-13" tabindex="0" role="button" aria-label="2025-11-13: 0 pages read, 0 minutes, 0 page-reading events" x="36" y="126" width="11" height="11" rx="2" fill="#ebedf0"><title>2025-11-13: 0 pages read, 0 minutes, 0 page-reading events</title></rect>
 <rect class="activity-cell" data-date="2025-11-14" tabindex="0" role="button" aria-label="2025-11-14: 0 pages read, 0 minutes, 0 page-reading events" x="36" y="140" width="11" height="11" rx="2" fill="#ebedf0"><title>2025-11-14: 0 pages read, 0 minutes, 0 page-reading events</title></rect>
 <rect class="activity-cell" data-date="2025-11-15" tabindex="0" role="button" aria-label="2025-11-15: 0 pages read, 0 minutes, 0 page-reading events" x="36" y="154" width="11" height="11" rx="2" fill="#ebedf0"><title>2025-11-15: 0 pages read, 0 minutes, 0 page-reading events</title></rect>
@@ -411,7 +424,7 @@ h1 { margin: 0 0 8px; font-size: 24px; }
 <rect class="activity-cell" data-date="2026-11-09" tabindex="0" role="button" aria-label="2026-11-09: 0 pages read, 0 minutes, 0 page-reading events" x="764" y="84" width="11" height="11" rx="2" fill="#ebedf0"><title>2026-11-09: 0 pages read, 0 minutes, 0 page-reading events</title></rect>
 <rect class="activity-cell" data-date="2026-11-10" tabindex="0" role="button" aria-label="2026-11-10: 0 pages read, 0 minutes, 0 page-reading events" x="764" y="98" width="11" height="11" rx="2" fill="#ebedf0"><title>2026-11-10: 0 pages read, 0 minutes, 0 page-reading events</title></rect>
 <rect class="activity-cell" data-date="2026-11-11" tabindex="0" role="button" aria-label="2026-11-11: 8 pages read, 4 minutes, 14 page-reading events" x="764" y="112" width="11" height="11" rx="2" fill="#40c463"><title>2026-11-11: 8 pages read, 4 minutes, 14 page-reading events</title></rect>
-<rect class="activity-cell" data-date="2026-11-12" tabindex="0" role="button" aria-label="2026-11-12: 18 pages read, 25 minutes, 25 page-reading events" x="764" y="126" width="11" height="11" rx="2" fill="#30a14e"><title>2026-11-12: 18 pages read, 25 minutes, 25 page-reading events</title></rect>
+<rect class="activity-cell" data-date="2026-11-12" tabindex="0" role="button" aria-label="2026-11-12: 43 pages read, 63 minutes, 66 page-reading events" x="764" y="126" width="11" height="11" rx="2" fill="#216e39"><title>2026-11-12: 43 pages read, 63 minutes, 66 page-reading events</title></rect>
 <text x="7" y="93" class="day">Mon</text>
 <text x="7" y="121" class="day">Wed</text>
 <text x="7" y="149" class="day">Fri</text>
@@ -430,18 +443,84 @@ h1 { margin: 0 0 8px; font-size: 24px; }
 <div class="stat"><span class="value" id="detail-minutes">0</span><span class="label">minutes read</span></div>
 <div class="stat"><span class="value" id="detail-events">0</span><span class="label">page-reading events</span></div>
 </div>
+<table class="books">
+<caption>Pages by book</caption>
+<thead><tr><th>Book</th><th>Pages</th><th>Minutes</th><th>Events</th></tr></thead>
+<tbody id="detail-books"></tbody>
+</table>
 </section>
-<p class="privacy">Page counts are KOReader-normalized screen pages. No book titles or reading metadata are published.</p>
+<p class="privacy">Page counts are KOReader-normalized screen pages. Book titles are shown publicly; authors and identifiers are omitted.</p>
 </main>
 <script>
-const daily = {"2026-11-11":{"events":14,"minutes":4,"pages":8},"2026-11-12":{"events":25,"minutes":25,"pages":18}};
+const daily = {"2026-11-11":{"books":[{"events":14,"minutes":4,"pages":8,"title":"KOReader Quickstart Guide"}],"events":14,"minutes":4,"pages":8},"2026-11-12":{"books":[{"events":57,"minutes":56,"pages":33,"title":"The Body: A Guide for Occupants: A Guide for Occupants"},{"events":6,"minutes":6,"pages":7,"title":"[Red Rising 1 ] Brown, Pierce - Red Rising (2014, Random House Publishing Group) - libgen.li"},{"events":2,"minutes":0,"pages":2,"title":"Donella H. Meadows - Thinking in Systems_ A Primer (2008, Chelsea Green Publishing) - libgen.li"},{"events":1,"minutes":1,"pages":1,"title":"[Red Rising 1 ] Brown, Pierce - Red Rising (2014, Random House Publishing Group) - libgen.li"}],"events":66,"minutes":63,"pages":43}};
 const cells = document.querySelectorAll('.activity-cell');
+const syncControls = document.getElementById('sync-controls');
+const syncButton = document.getElementById('sync-button');
+const syncStatus = document.getElementById('sync-status');
+function describeSync(status) {
+  if (!status.finished_at) return status.message || 'No synchronization has completed yet.';
+  const finished = new Date(status.finished_at).toLocaleString();
+  return `${status.message} Last attempt: ${finished}`;
+}
+async function discoverManualSync() {
+  try {
+    const response = await fetch('/api/status', {cache: 'no-store'});
+    if (!response.ok) return;
+    const status = await response.json();
+    if (!status.manual_sync_enabled) return;
+    syncControls.hidden = false;
+    syncStatus.textContent = describeSync(status);
+  } catch (_error) {
+    // GitHub Pages has no sync API, so the manual control stays hidden there.
+  }
+}
+async function runManualSync() {
+  let token = sessionStorage.getItem('kindleSyncToken');
+  if (!token) {
+    token = window.prompt('Enter the Raspberry Pi manual-sync token:');
+    if (!token) return;
+    sessionStorage.setItem('kindleSyncToken', token);
+  }
+  syncButton.disabled = true;
+  syncStatus.textContent = 'Synchronizing Kindle and updating GitHub…';
+  try {
+    const response = await fetch('/api/sync', {
+      method: 'POST',
+      headers: {'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json'},
+      body: '{}',
+    });
+    const status = await response.json();
+    if (response.status === 401) sessionStorage.removeItem('kindleSyncToken');
+    syncStatus.textContent = describeSync(status);
+  } catch (_error) {
+    syncStatus.textContent = 'Could not reach the Raspberry Pi sync service.';
+  } finally {
+    syncButton.disabled = false;
+  }
+}
+syncButton.addEventListener('click', runManualSync);
 function showDay(day) {
-  const values = daily[day] || {pages: 0, minutes: 0, events: 0};
+  const values = daily[day] || {pages: 0, minutes: 0, events: 0, books: []};
   document.getElementById('detail-date').textContent = new Date(day + 'T12:00:00').toLocaleDateString(undefined, {dateStyle: 'full'});
   document.getElementById('detail-pages').textContent = values.pages;
   document.getElementById('detail-minutes').textContent = values.minutes;
   document.getElementById('detail-events').textContent = values.events;
+  const bookRows = document.getElementById('detail-books');
+  bookRows.replaceChildren();
+  if (values.books.length === 0) {
+    const row = bookRows.insertRow();
+    const cell = row.insertCell();
+    cell.colSpan = 4;
+    cell.textContent = 'No reading activity';
+  } else {
+    values.books.forEach(book => {
+      const row = bookRows.insertRow();
+      [book.title, book.pages, book.minutes, book.events].forEach(value => {
+        const cell = row.insertCell();
+        cell.textContent = value;
+      });
+    });
+  }
   cells.forEach(cell => cell.setAttribute('aria-pressed', String(cell.dataset.date === day)));
 }
 cells.forEach(cell => {
@@ -451,6 +530,7 @@ cells.forEach(cell => {
   });
 });
 showDay('2026-11-12');
+discoverManualSync();
 </script>
 </body>
 </html>
