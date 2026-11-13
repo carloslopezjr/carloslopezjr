@@ -464,7 +464,7 @@ function describeSync(status) {
 }
 async function discoverManualSync() {
   try {
-    const response = await fetch('/api/status', {cache: 'no-store'});
+    const response = await fetch('api/status', {cache: 'no-store'});
     if (!response.ok) return;
     const status = await response.json();
     if (!status.manual_sync_enabled) return;
@@ -484,7 +484,7 @@ async function runManualSync() {
   syncButton.disabled = true;
   syncStatus.textContent = 'Synchronizing Kindle and updating GitHub…';
   try {
-    const response = await fetch('/api/sync', {
+    const response = await fetch('api/sync', {
       method: 'POST',
       headers: {'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json'},
       body: '{}',
